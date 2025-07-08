@@ -51,7 +51,7 @@ app.post("/submit-to-google-sheets", async (req, res) => {
   try {
     console.log("📩 Received request at /submit-to-google-sheets");
 
-    const { name, email, phone, pincode, lookingFor, experience, country, origin } = req.body;
+    const { name, email, phone, pincode, lookingFor, experience, country, origin, qualification, age, germanStatus, startPlanning, CallBack } = req.body;
 
     const missingFields = [];
     if (!name) missingFields.push("Name");
@@ -97,6 +97,11 @@ app.post("/submit-to-google-sheets", async (req, res) => {
       Experience: experience || "",
       Date: formattedDate,
       Time: formattedTime,
+      "Current Qualification": qualification || "",
+      "Age": age || "",
+      "German Lang Status": germanStatus || "",
+      "Planning To Start On": startPlanning || "",
+      "Call Back On": callBack || "",
     });
 
     console.log("✅ Data added successfully!");
